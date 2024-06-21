@@ -78,4 +78,9 @@
       height: 50vh;
     }
   }
+  .left {
+    @media (max-width: 767px) {
+      height: auto !important;
+    }
+  }
 }
