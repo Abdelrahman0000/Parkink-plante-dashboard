@@ -1,0 +1,82 @@
+.dash {
+  position: relative;
+  .right {
+    display: block;
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+
+.info-card {
+  box-shadow: -5px 16px 20px 0px #010f41a1;
+}
+tspan {
+  fill: #fff !important;
+
+  color: #53757f57;
+}
+#notifications {
+  position: fixed;
+  right: 190px;
+  z-index: 10;
+
+  margin-top: 20px;
+  @media (max-width: 767px) {
+    margin-top: 0;
+  }
+  border: none !important;
+  .notifi-inner {
+    //position: fixed;
+    width: 22rem;
+    height: calc(100vh - 5.5rem);
+    overflow-y: hidden;
+    // padding: 15px 0;
+    border: none !important;
+    @media (max-width: 767px) {
+      height: calc(100vh - 20vh);
+      width: 20rem;
+    }
+    .mydate {
+      position: relative;
+      &::after {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        content: "";
+        background-color: #6d72f4;
+
+        left: -14px;
+        top: 3px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .notifi-bg {
+    background-color: #f8f8f8;
+    border: none !important;
+  }
+  #messages {
+    margin-top: 25px;
+    animation: 1s fadeIn;
+    animation-fill-mode: forwards;
+    height: calc(100vh - 9rem);
+    //  visibility: hidden;
+    overflow-y: scroll;
+    // margin: 15px 0;
+  }
+
+  @keyframes fadeIn {
+    50% {
+      visibility: hidden;
+    }
+    60% {
+      visibility: visible;
+      opacity: 0.5;
+    }
+    100% {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

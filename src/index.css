@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --green: #019267;
+  --light-white: #b5b5b5;
+}
+
+body {
+  background: #bed7dca6;
+}
+
+.main {
+  margin-left: 150px;
+  padding: 25px 18px;
+  height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .main {
+    height: auto;
+    margin: 0;
+    margin-bottom: 150px;
+  }
+}

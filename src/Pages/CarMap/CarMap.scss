@@ -1,0 +1,141 @@
+.car-map {
+  .slot-group-name {
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    p {
+      rotate: -90deg;
+      span {
+        display: block;
+      }
+    }
+    .arrow-group {
+      rotate: 90deg;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 103px;
+    }
+    @media (max-width: 767px) {
+      width: 700px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .left-col-car {
+    @media (max-width: 767px) {
+      margin-bottom: 40px;
+    }
+    .slot-num {
+      width: 201px;
+      height: 150px;
+      border-top: 4px solid #ababab;
+      border-left: 4px solid #ababab;
+      position: relative;
+      padding: 10px;
+      span {
+        position: absolute;
+        top: -17px;
+        color: #ababab;
+        font-size: 30px;
+        right: -13px;
+      }
+
+      .end-span {
+        display: none;
+      }
+
+      &:last-child {
+        border-bottom: 4px solid #ababab; // Adjust the border as needed
+
+        .end-span {
+          display: block;
+          position: absolute;
+          width: 20px;
+          top: 130px;
+          color: #ababab;
+          font-size: 30px;
+          right: -3px;
+        }
+      }
+    }
+    @keyframes moveCar {
+      from {
+        left: 216px;
+      }
+      to {
+        left: 30px;
+      }
+    }
+
+    .slot-img {
+      // width: 100px;
+      left: 216px;
+      animation: moveCar 1s forwards; /* Adjust the duration as needed */
+      position: relative;
+
+      rotate: 90deg;
+      height: 150px;
+    }
+  }
+
+  .right-col-car {
+    @media (max-width: 767px) {
+      margin-bottom: 40px;
+
+      align-items: end;
+    }
+    .slot-num {
+      width: 201px;
+      height: 150px;
+      border-top: 4px solid #ababab;
+      border-right: 4px solid #ababab;
+      position: relative;
+      padding: 10px;
+      span {
+        position: absolute;
+        top: -17px;
+        color: #ababab;
+        font-size: 30px;
+        left: -13px;
+        rotate: 180deg;
+      }
+
+      .end-span {
+        display: none;
+      }
+
+      &:last-child {
+        border-bottom: 4px solid #ababab; // Adjust the border as needed
+
+        .end-span {
+          display: block;
+          position: absolute;
+          width: 20px;
+          top: 130px;
+          color: #ababab;
+          font-size: 30px;
+          left: -3px;
+        }
+      }
+    }
+    @keyframes moveCar2 {
+      from {
+        left: -170px;
+      }
+      to {
+        left: 60px;
+      }
+    }
+
+    .slot-img {
+      // width: 100px;
+      left: -170px;
+      position: relative;
+      animation: moveCar2 1s forwards;
+      rotate: -90deg;
+      height: 150px;
+    }
+  }
+}

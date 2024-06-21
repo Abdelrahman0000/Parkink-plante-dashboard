@@ -1,0 +1,34 @@
+$x-small-width: 797px;
+$small-width: 797px;
+$medium-width: 1024px;
+$large-width: 1200px;
+
+$c-p: #f88818;
+$c-s: #000;
+$c-w: #ffffff;
+$c-g: #fdbd06;
+$c-purpl-dark: #371c54;
+$c-light-dark: #686868;
+
+@mixin x-small {
+  @media (max-width: #{$x-small-width - 1px}) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
