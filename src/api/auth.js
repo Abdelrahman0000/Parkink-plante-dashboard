@@ -31,12 +31,13 @@ export const login = async (credentials) => {
     throw error;
   }
 };
-export const fetchUser = async () => {
-  try {
-    const response = await api.get("/user");
-    return response.data;
-  } catch (error) {
-    console.error("Fetch user error:", error);
-    throw error;
-  }
-};
+
+// export const fetchUser = async () => {
+//   try {
+//     const response = await api.get("/user");
+//     return response.data;
+//   } catch (error) {
+//     console.error("Fetch user error:", error);
+//     throw error;
+//   }
+// };

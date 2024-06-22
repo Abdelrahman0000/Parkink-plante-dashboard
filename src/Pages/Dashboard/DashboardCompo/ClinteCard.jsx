@@ -33,7 +33,6 @@ const ClinteCard = ({ title, path, color }) => {
     );
   if (error) return <div>Error loading data</div>;
 
-  console.log(data);
   return (
     <div className="flex  h-36 mb-7   flex-col info-card items-start p-4 bg-white rounded-lg ">
       <div className="text-black text-2xl font-medium">{title}</div>{" "}

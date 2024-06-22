@@ -15,6 +15,11 @@ const LazyCarmap = React.lazy(() => import("./Pages/CarMap/Carmap"));
 const LazyAllDriver = React.lazy(() => import("./Pages/AllDriver/AllDriver"));
 
 const App = () => {
+  // function clearAllItems() {
+  //   localStorage.clear();
+  //   alert("All items deleted");
+  // }
+  // clearAllItems();
   return (
     <Router>
       <Routes>

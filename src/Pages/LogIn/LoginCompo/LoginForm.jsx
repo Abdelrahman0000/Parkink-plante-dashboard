@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { login } from "../../../api/auth";
@@ -23,7 +22,11 @@ const LoginForm = () => {
     },
     onError: (error) => {
       console.error("Login failed:", error);
-      alert("Login failed. Please check your credentials and try again.");
+      if (error.response && error.response.data) {
+        alert(`Login failed: ${error.response.data.message}`);
+      } else {
+        alert("Login failed. Please check your credentials and try again.");
+      }
     },
   });
 
@@ -57,7 +60,6 @@ const LoginForm = () => {
         required
       />
       <div className="btn-container">
-        {" "}
         <button type="submit">Login</button>
       </div>
     </form>
