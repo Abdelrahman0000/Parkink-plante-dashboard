@@ -53,8 +53,144 @@ const Notifications = () => {
                   </p>
                 </div>
               </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
+              <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
+                <div>
+                  <a href="#" className="font-semibold text-gray-900">
+                    New Message <br />
+                    <span className="text-xs mydate text-gray-400 animate-pulse">
+                      FEB 22 at 7:00 PM
+                    </span>
+                    <span className="absolute inset-0"></span>
+                  </a>
+                  <p className="h-6 text-xs font-normal text-gray-600">
+                    You have been invited to attend a meeting of the Board
+                    Directors
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-100">
+
+            {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-100">
               <a
                 href="#"
                 className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-blue-200"
@@ -71,7 +207,7 @@ const Notifications = () => {
               >
                 {showNotifications ? "Close" : "Show Notifications"}
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
