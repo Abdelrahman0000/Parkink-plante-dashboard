@@ -19,3 +19,10 @@ body {
     margin-bottom: 150px;
   }
 }
+select {
+  border-right: 16px solid transparent;
+}
+input:focus-visible {
+  //border: none !important;
+  outline: none !important;
+}
