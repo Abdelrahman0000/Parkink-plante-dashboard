@@ -21,14 +21,36 @@ const fetchBlacklistData = async () => {
 
 const Blacklist = ({ virtual = true }) => {
   const { data, error, isLoading } = useQuery("blacklist", fetchBlacklistData);
-
+  console.log(data);
   if (isLoading)
     return (
       <div>
         <Skeleton width={250} height={400} />
       </div>
     );
-  if (error) return <div>Error loading data</div>;
+  if (error)
+    return (
+      <div className="p-6 bg-gray-800 my-5 text-white table-contain rounded-lg shadow-md">
+        <h2 className="text-lg font-bold mb-4">Black List</h2>
+        <table className="w-full">
+          <thead>
+            <tr className="text-left">
+              <th className="pb-2 b-left">Phone number / mail</th>
+              <th className="pb-2">Car model</th>
+              <th className="pb-2">Plate number</th>
+              <th className="pb-2 b-right">name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colSpan="4" className="py-2 text-center">
+                Error loading data
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
   return (
     <div className="p-6 bg-gray-800 my-5 text-white table-contain rounded-lg shadow-md">
       <h2 className="text-lg font-bold mb-4">Black List</h2>

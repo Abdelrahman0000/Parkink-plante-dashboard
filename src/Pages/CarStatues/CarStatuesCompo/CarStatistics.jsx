@@ -33,7 +33,6 @@ const CarStatistics = () => {
         : "/Bookings/MostCarsBookedLastMonth"
     );
   };
-  console.log(data);
 
   if (isLoading)
     return (
@@ -41,7 +40,22 @@ const CarStatistics = () => {
         <Skeleton width={250} height={400} />
       </div>
     );
-  if (error) return <div>Error loading data</div>;
+  if (error)
+    return (
+      <div className="p-6 bg-gray-800 text-white TopCar rounded-lg shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold">Car Statistics</h2>
+        </div>
+        <div className="flex justify-center items-center car-h">
+          <div
+            className="relative car-inner flex justify-center items-center"
+            style={{ height: "250px" }}
+          >
+            <div className="text-gray-400 text-xl"> Error loading data</div>
+          </div>
+        </div>
+      </div>
+    );
   return (
     <div className="p-6 bg-gray-800 text-white TopCar rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-4">
@@ -79,10 +93,10 @@ const CarStatistics = () => {
               />
               {data.map((item, index) => (
                 <p
-                  className={`car-${index} car-name text-xl font-bold`}
+                  className={`car-${index} car-name text-small font-bold`}
                   key={index}
                 >
-                  {item.brand}
+                  {item.carModel}
                 </p>
               ))}
             </>

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./Component/ProtectedRoute";
 import "./index.css";
@@ -20,6 +20,19 @@ const App = () => {
   //   alert("All items deleted");
   // }
   // clearAllItems();
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.clear();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <Router>
       <Routes>
