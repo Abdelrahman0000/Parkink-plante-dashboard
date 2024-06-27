@@ -1,39 +1,19 @@
 import { useState, useEffect } from "react";
-import { FaBell, FaChevronDown } from "react-icons/fa";
 import { useQueryClient } from "react-query";
+import { FaBell, FaChevronDown } from "react-icons/fa";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 import axios from "axios";
-import * as signalR from "@microsoft/signalr";
-
-const fetchNotificationData = async () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    throw new Error("No token found");
-  }
-
-  const response = await axios.get(
-    `https://comfyparking.tryasp.net/notification`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
-
-  return response.data;
-};
 
 const Notifications = () => {
-  const queryClient = useQueryClient();
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(true);
   const [showMessages, setShowMessages] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
-    // Fetch initial notifications
-    fetchNotificationData().then(setNotifications).catch(console.error);
-
-    // Setup SignalR connection
-    const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://comfyparking.tryasp.net/notificationHub")
+    const connection = new HubConnectionBuilder()
+      .withUrl("https://comfyparking.tryasp.net/notification")
       .build();
 
     connection
@@ -45,12 +25,15 @@ const Notifications = () => {
         console.error("Error starting connection:", err.toString());
       });
 
-    connection.on("ReceiveNotification", (notification) => {
+    connection.on("sendNotification", (Title, Message) => {
+      const newNotification = { Title, Message, timestamp: new Date() };
       setNotifications((prevNotifications) => [
         ...prevNotifications,
-        notification,
+        newNotification,
       ]);
-      queryClient.invalidateQueries("Notification");
+
+      // Update local storage with new notifications
+      localStorage.setItem("notifications", JSON.stringify(notifications));
     });
 
     return () => {
@@ -63,13 +46,11 @@ const Notifications = () => {
           console.error("Error stopping connection:", err.toString());
         });
     };
-  }, [queryClient]);
+  }, []);
 
   const handleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
-
-  if (!notifications) return null;
   console.log(notifications);
   return (
     <div className="" id="notifications">
@@ -93,7 +74,7 @@ const Notifications = () => {
             <div id="messages" className={`${!showMessages && "hidden"}`}>
               {notifications.length === 0 ? (
                 <div className="text-gray-400 text-xl">
-                  There is no New Message
+                  There are no notifications available
                 </div>
               ) : (
                 notifications.map((item, index) => (
@@ -101,15 +82,15 @@ const Notifications = () => {
                     key={index}
                     className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white"
                   >
-                    <div>
+                    <div style={{ height: "auto" }}>
                       <a href="#" className="font-semibold text-gray-900">
                         {item.Title} <br />
                         <span className="text-xs mydate text-gray-400 animate-pulse">
-                          just now
+                          {item.timestamp.toLocaleString()}
                         </span>
                         <span className="absolute inset-0"></span>
                       </a>
-                      <p className="h-6 text-xs font-normal text-gray-600">
+                      <p className=" text-xs font-normal text-gray-600">
                         {item.Message}
                       </p>
                     </div>
@@ -117,25 +98,6 @@ const Notifications = () => {
                 ))
               )}
             </div>
-
-            {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-100">
-              <a
-                href="#"
-                className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-blue-200"
-                onClick={() => setShowMessages(!showMessages)}
-                id="toggleButton"
-              >
-                {showMessages ? "Clear" : "Undo"}
-              </a>
-              <a
-                href="#"
-                className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-blue-200"
-                onClick={() => setShowNotifications(!showNotifications)}
-                id="closeButton"
-              >
-                {showNotifications ? "Close" : "Show Notifications"}
-              </a>
-            </div> */}
           </div>
         </div>
       </div>
