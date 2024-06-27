@@ -20,7 +20,7 @@ const Dashboard = () => {
       <div className="flex">
         <div className="left w-9/12 md:w-full">
           <h2 className="text-5xl font-bold mb-24">
-            Good Morning, saeed!{" "}
+            Good Morning, sir!{" "}
             <div className="md:block hidden">
               <Suspense fallback={<Skeleton width={200} height={20} />}>
                 <Notifications />

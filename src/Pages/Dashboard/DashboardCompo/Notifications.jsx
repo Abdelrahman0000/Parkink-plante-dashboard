@@ -1,106 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBell, FaChevronDown } from "react-icons/fa";
-import { useQuery } from "react-query";
+import { useQueryClient } from "react-query";
 import axios from "axios";
+import * as signalR from "@microsoft/signalr";
+
 const fetchNotificationData = async () => {
   const token = localStorage.getItem("token");
   if (!token) {
     throw new Error("No token found");
   }
-  console.log(token);
+
   const response = await axios.get(
-    `https://comfyparking.tryasp.net/notification`
+    `https://comfyparking.tryasp.net/notification`,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
   );
 
   return response.data;
 };
 
 const Notifications = () => {
-  const { data, error, isLoading } = useQuery(
-    "Notification",
-    fetchNotificationData
-  );
-
+  const queryClient = useQueryClient();
+  const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(true);
   const [showMessages, setShowMessages] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // const handleClose = () => {
-  //   setShowNotifications(!showNotifications);
-  // };
+  useEffect(() => {
+    // Fetch initial notifications
+    fetchNotificationData().then(setNotifications).catch(console.error);
 
-  // const handleToggle = () => {
-  //   setShowMessages(!showMessages);
-  // };
+    // Setup SignalR connection
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("https://comfyparking.tryasp.net/notificationHub")
+      .build();
+
+    connection
+      .start()
+      .then(() => {
+        console.log("Connection started successfully");
+      })
+      .catch((err) => {
+        console.error("Error starting connection:", err.toString());
+      });
+
+    connection.on("ReceiveNotification", (notification) => {
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        notification,
+      ]);
+      queryClient.invalidateQueries("Notification");
+    });
+
+    return () => {
+      connection
+        .stop()
+        .then(() => {
+          console.log("Connection stopped successfully");
+        })
+        .catch((err) => {
+          console.error("Error stopping connection:", err.toString());
+        });
+    };
+  }, [queryClient]);
 
   const handleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
-  console.log(data);
-  if (isLoading)
-    return (
-      <div className="" id="notifications">
-        <div
-          className={`absolute left z-10 mt-5 notifi-inner flex max-w-max -translate-x-1/2 px-4 ${
-            !showNotifications && "hidden"
-          }`}
-          style={{ height: isCollapsed ? "50px" : "calc(100vh - 28.5vh)" }}
-        >
-          <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
-            <div className="p-4">
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
-                aria-expanded="false"
-                onClick={handleCollapse}
-              >
-                <FaBell className="fa-shake" /> <span>Notifications</span>
-                <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
-              </button>
-              <div id="messages" className={`${!showMessages && "hidden"}`}>
-                <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
-                  <div className="text-gray-400 text-sm">
-                    There is no new messages
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  if (error)
-    return (
-      <div className="" id="notifications">
-        <div
-          className={`absolute left z-10 mt-5 notifi-inner flex max-w-max -translate-x-1/2 px-4 ${
-            !showNotifications && "hidden"
-          }`}
-          style={{ height: isCollapsed ? "50px" : "calc(100vh - 28.5vh)" }}
-        >
-          <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
-            <div className="p-4">
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
-                aria-expanded="false"
-                onClick={handleCollapse}
-              >
-                <FaBell className="fa-shake" /> <span>Notifications</span>
-                <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
-              </button>
-              <div id="messages" className={`${!showMessages && "hidden"}`}>
-                <div className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white">
-                  <div className="text-gray-400 text-sm">
-                    Error loading data . . . . .
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+
+  if (!notifications) return null;
+  console.log(notifications);
   return (
     <div className="" id="notifications">
       <div
@@ -117,16 +87,16 @@ const Notifications = () => {
               aria-expanded="false"
               onClick={handleCollapse}
             >
-              <FaBell className="fa-shake" /> <span>Notifications</span>
+              <FaBell className="fa-shake" />
               <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
             </button>
             <div id="messages" className={`${!showMessages && "hidden"}`}>
-              {data.length === 0 ? (
+              {notifications.length === 0 ? (
                 <div className="text-gray-400 text-xl">
-                  There is no data available
+                  There is no New Message
                 </div>
               ) : (
-                data.map((item, index) => (
+                notifications.map((item, index) => (
                   <div
                     key={index}
                     className="group relative mb-3 flex gap-x-6 rounded-lg p-5 bg-white"
@@ -140,7 +110,7 @@ const Notifications = () => {
                         <span className="absolute inset-0"></span>
                       </a>
                       <p className="h-6 text-xs font-normal text-gray-600">
-                        {item.Massage}
+                        {item.Message}
                       </p>
                     </div>
                   </div>
@@ -152,7 +122,7 @@ const Notifications = () => {
               <a
                 href="#"
                 className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-blue-200"
-                onClick={handleToggle}
+                onClick={() => setShowMessages(!showMessages)}
                 id="toggleButton"
               >
                 {showMessages ? "Clear" : "Undo"}
@@ -160,7 +130,7 @@ const Notifications = () => {
               <a
                 href="#"
                 className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-blue-200"
-                onClick={handleClose}
+                onClick={() => setShowNotifications(!showNotifications)}
                 id="closeButton"
               >
                 {showNotifications ? "Close" : "Show Notifications"}

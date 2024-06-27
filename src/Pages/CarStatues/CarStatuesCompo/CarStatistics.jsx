@@ -4,12 +4,28 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import Cars from "../../../assets/Cars.png";
 import Skeleton from "../../../Component/Skeleton";
+
 const fetchCarsData = async (path) => {
   const token = localStorage.getItem("token");
+  console.log(`Fetching data for path: ${path}`);
   const response = await axios.get(`https://comfyparking.tryasp.net${path}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
+};
+
+const fetchAndStoreData = async (path) => {
+  const localData = localStorage.getItem(path);
+  console.log(`Local storage data for path ${path}:`, localData);
+  if (localData) {
+    return JSON.parse(localData);
+  } else {
+    const data = await fetchCarsData(path);
+    console.log(`Fetched data for path ${path}:`, data);
+    localStorage.setItem(path, JSON.stringify(data));
+    console.log(`Data stored in local storage for path ${path}`);
+    return data;
+  }
 };
 
 const CarStatistics = () => {
@@ -19,7 +35,7 @@ const CarStatistics = () => {
 
   const { data, error, isLoading } = useQuery(
     ["carsData", timeframe],
-    () => fetchCarsData(timeframe),
+    () => fetchAndStoreData(timeframe),
     {
       keepPreviousData: true,
     }
@@ -40,6 +56,7 @@ const CarStatistics = () => {
         <Skeleton width={250} height={400} />
       </div>
     );
+
   if (error)
     return (
       <div className="p-6 bg-gray-800 text-white TopCar rounded-lg shadow-md">
@@ -51,11 +68,12 @@ const CarStatistics = () => {
             className="relative car-inner flex justify-center items-center"
             style={{ height: "250px" }}
           >
-            <div className="text-gray-400 text-xl"> Error loading data</div>
+            <div className="text-gray-400 text-xl">Error loading data</div>
           </div>
         </div>
       </div>
     );
+
   return (
     <div className="p-6 bg-gray-800 text-white TopCar rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-4">
@@ -80,8 +98,7 @@ const CarStatistics = () => {
         >
           {data.length === 0 ? (
             <div className="text-gray-400 text-xl">
-              {" "}
-              there is no data avilabel
+              There is no data available
             </div>
           ) : (
             <>

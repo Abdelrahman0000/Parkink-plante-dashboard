@@ -40,7 +40,13 @@
 }
 .order-chart {
   tspan {
-    font-size: 8px !important;
+    font-size: 6px !important;
+  }
+  line[y1="140"][style*="stroke: rgb(236, 239, 241)"] {
+    display: none;
+  }
+  line[x1="50"][x2="380"] {
+    stroke-dasharray: none !important;
   }
 }
 .table-contain {

@@ -12,7 +12,7 @@ const carImageUrl =
 
 const fetchSpaces = async () => {
   const token = localStorage.getItem("token");
-  console.log(token);
+
   if (!token) {
     throw new Error("No token found");
   }
