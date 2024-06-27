@@ -46,7 +46,7 @@ const CarStatistics = () => {
     setTimeframe(
       selectedTimeframe === "lastYear"
         ? "/Bookings/MostCarsBookedLastYear"
-        : "/Bookings/MostCarsBookedLastMonth"
+        : "/Bookings/MostCarsBookedLastMounth"
     );
   };
 
