@@ -2,7 +2,7 @@
 import { IoIosArrowForward } from "react-icons/io";
 
 const Lane = ({ slot, carImageUrl, index }) => (
-  <div className="flex items-center slot-num justify-between">
+  <div className="flex items-center slot-num justify-center">
     {slot.status === "Busy" ? (
       <img
         className="slot-img"
