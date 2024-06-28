@@ -58,7 +58,7 @@ const Notifications = () => {
         className={`absolute left z-10 mt-5 notifi-inner flex max-w-max -translate-x-1/2 px-4 ${
           !showNotifications && "hidden"
         }`}
-        style={{ height: isCollapsed ? "50px" : "calc(47.5vh)" }}
+        style={{ height: isCollapsed ? "50px" : "calc(50.5vh)" }}
       >
         <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
           <div className="p-4">

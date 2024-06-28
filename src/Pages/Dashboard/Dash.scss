@@ -90,7 +90,7 @@ tspan {
     margin-top: 25px;
     animation: 1s fadeIn;
     animation-fill-mode: forwards;
-    height: calc(75vh - 9rem);
+    height: calc(50.5vh - 6rem);
     //  visibility: hidden;
     overflow-y: scroll;
     padding-right: 12px;
@@ -126,7 +126,7 @@ tspan {
 }
 .right-data {
   .chartLine-inner {
-    height: 850px;
+    height: 870px;
     overflow: hidden;
 
     @media (max-width: 786px) {
