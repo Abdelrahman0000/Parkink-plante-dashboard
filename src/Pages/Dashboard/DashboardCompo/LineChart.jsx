@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { VictoryChart, VictoryGroup, VictoryArea, VictoryAxis } from "victory";
 
 const LineChart = ({ data, lineColors, backgroundColors }) => {
@@ -50,8 +51,21 @@ const LineChart = ({ data, lineColors, backgroundColors }) => {
         ))}
       </VictoryGroup>
       <VictoryAxis
-        tickValues={[0, 1, 2, 3, 4, 5, 6]}
-        tickFormat={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]}
+        tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}
+        tickFormat={[
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ]}
         style={{
           axisLabel: { fill: "#ffffff" }, // Set axis label color to white
           ticks: { stroke: "#ffffff" }, // Set tick color to white

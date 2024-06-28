@@ -44,7 +44,7 @@ const ClinteCard = ({ title, path, color }) => {
       <div className="text-5xl 2xl:w-full xl:w-full flex items-center justify-between   font-bold mb-2   ">
         {data.number}{" "}
         <span
-          className="ml-auto bg-gray-300 w-6/12 text-base inline-block flex rounded-lg items-center justify-center   h-7"
+          className="ml-auto bg-gray-300 w-6/12 text-xs inline-block flex rounded-lg items-center justify-center   h-7"
           style={{ color: color }}
         >
           {" "}

@@ -1,0 +1,92 @@
+.login {
+  font-family: "Cairo", sans-serif;
+  background-color: #fff;
+}
+.login .left-inner {
+  margin: auto;
+}
+@media (max-width: 767px) {
+  .login .left-inner {
+    margin: 70px auto;
+  }
+}
+.login h1 {
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: var(--green);
+}
+.login p {
+  font-weight: 400;
+  color: var(--light-white);
+  margin-bottom: 80px;
+}
+.login .left {
+  max-width: 519px;
+  padding: 20px;
+}
+.login .left input {
+  max-width: 419px;
+  width: 100%;
+  height: 48px;
+  padding: 10px 8px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border-width: 3px, 3px, 3px, 3px;
+  border-style: solid;
+  border-color: #b5b5b5;
+  box-shadow: 0px 4px 12px 0px rgba(1, 15, 65, 0.631372549);
+  font-family: "Cairo", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 38.09px;
+  text-align: left;
+}
+@media (max-width: 797px) {
+  .login .left input {
+    height: 38px;
+  }
+}
+.login .left .btn-container {
+  margin-top: 25px;
+  display: flex;
+  width: 100%;
+  max-width: 419px;
+}
+.login .left .btn-container button {
+  margin: auto;
+  width: 238px;
+  height: 48px;
+  padding: 10px 8px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border-width: 3px, 3px, 3px, 3px;
+  background: linear-gradient(90deg, #019267 0%, #002c1f 100%);
+  font-family: "Cairo", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #fff;
+}
+@media (max-width: 797px) {
+  .login .left .btn-container button {
+    height: 38px;
+    line-height: 17px;
+  }
+}
+.login .right,
+.login .left {
+  height: 100%;
+  max-width: none;
+}
+@media (max-width: 767px) {
+  .login .right,
+  .login .left {
+    width: 100%;
+    height: 50vh;
+  }
+}
+@media (max-width: 767px) {
+  .login .left {
+    height: auto !important;
+  }
+}

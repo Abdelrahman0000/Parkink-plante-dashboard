@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useQueryClient } from "react-query";
-import { FaBell, FaChevronDown } from "react-icons/fa";
+import { FaRegBell, FaChevronDown } from "react-icons/fa";
 import { HubConnectionBuilder } from "@microsoft/signalr";
+import Person from "../../../assets/person.png";
 import axios from "axios";
 
 const Notifications = () => {
@@ -48,6 +50,31 @@ const Notifications = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleMediaQueryChange = (event) => {
+      if (event.matches) {
+        setIsCollapsed(true);
+      } else {
+        setIsCollapsed(false);
+      }
+    };
+
+    // Initial check
+    if (mediaQuery.matches) {
+      setIsCollapsed(true);
+    }
+
+    // Add event listener
+    mediaQuery.addListener(handleMediaQueryChange);
+
+    // Cleanup event listener
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
+
   const handleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -55,26 +82,35 @@ const Notifications = () => {
   return (
     <div className="" id="notifications">
       <div
-        className={`absolute left z-10 mt-5 notifi-inner flex max-w-max -translate-x-1/2 px-4 ${
+        className={`absolute left z-10 mt-5 notifi-inner flex  -translate-x-1/2 px-4 ${
           !showNotifications && "hidden"
         }`}
-        style={{ height: isCollapsed ? "50px" : "calc(59vh)" }}
+        style={{ height: isCollapsed ? "56px" : "calc(59vh)" }}
       >
         <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
-          <div className="p-4">
+          <div className="p-4" style={{ direction: "rtl" }}>
             <button
               type="button"
-              className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              className="inline-flex  items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
               aria-expanded="false"
               onClick={handleCollapse}
+              style={{ direction: "ltr" }}
             >
-              <FaBell className="fa-shake" />
+              <FaRegBell className="fa-shake  text-2xl" />
+              <img
+                src={Person}
+                className="w-7 h-7 mx-2 rounded-full"
+                alt="person"
+              />
               <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
             </button>
             <div
               id="messages"
               className={`${!showMessages && "hidden"}`}
-              style={{ display: isCollapsed ? "none" : "block" }}
+              style={{
+                display: isCollapsed ? "none" : "block",
+                direction: "ltr",
+              }}
             >
               {notifications.length === 0 ? (
                 <div className="text-gray-400 text-xl">

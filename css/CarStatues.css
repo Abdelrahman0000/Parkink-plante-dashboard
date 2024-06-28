@@ -1,0 +1,90 @@
+@media (min-width: 1024px) {
+  .TopCar {
+    height: 486px;
+  }
+  .TopCar .car-h {
+    height: 406px !important;
+  }
+}
+.TopCar img {
+  scale: 0.9;
+}
+.TopCar .car-name {
+  position: absolute;
+}
+@media (max-width: 600px) {
+  .TopCar .car-name {
+    font-size: 0.75rem;
+  }
+}
+.TopCar .car-shape {
+  width: 350px;
+}
+@media (max-width: 767px) {
+  .TopCar .car-shape {
+    width: 90%;
+    height: auto;
+  }
+}
+.TopCar .car-3 {
+  top: 16%;
+  left: 0;
+}
+.TopCar .car-2 {
+  left: 0;
+  bottom: 16%;
+}
+.TopCar .car-1 {
+  top: 16%;
+  right: 0;
+}
+.TopCar .car-0 {
+  right: 0;
+  bottom: 16%;
+}
+
+.order-chart tspan {
+  font-size: 6px !important;
+}
+.order-chart line[y1="140"][style*="stroke: rgb(236, 239, 241)"] {
+  display: none;
+}
+.order-chart line[x1="50"][x2="380"] {
+  stroke-dasharray: none !important;
+}
+
+.table-contain {
+  overflow-x: scroll;
+}
+.table-contain::-webkit-scrollbar {
+  height: 0.3rem;
+  padding: 0 7px;
+}
+.table-contain::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.table-contain::-webkit-scrollbar-thumb {
+  background-color: #f9ca42;
+  border-radius: 5rem;
+}
+
+th {
+  color: #f9ca42;
+  background-color: rgba(249, 202, 66, 0.1607843137);
+  padding: 8px 20px;
+  min-width: 250px;
+}
+
+.b-left {
+  border-top-left-radius: 10px;
+}
+
+.b-right {
+  border-top-right-radius: 10px;
+}
+
+td {
+  background-color: rgba(0, 0, 0, 0.6705882353);
+  padding: 8px 20px;
+  min-width: 250px;
+}
