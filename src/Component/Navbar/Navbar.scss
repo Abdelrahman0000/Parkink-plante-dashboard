@@ -30,7 +30,7 @@ $large-width: 1200px;
   @media (min-width: 767px) {
     position: fixed;
     left: 20px;
-
+    padding: 100px 0;
     top: 20px;
 
     bottom: 20px;
@@ -47,7 +47,7 @@ $large-width: 1200px;
 
     /* box-shadow: 25px 25px 75px rgba(0, 0, 0, .25), 10px 10px 70px rgba(0, 0, 0, .25), inset 5px 5px 10px rgba(0, 0, 0, .5), inset 5px 5px 20px rgba(255, 255, 255, .2), inset -5px -5px 15px rgba(0, 0, 0, .75); */
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     li {

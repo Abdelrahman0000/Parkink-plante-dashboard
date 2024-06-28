@@ -18,12 +18,13 @@ const ClientMap = () => {
         borderRadius: "20px",
         backgroundColor: "#3d3d3df0",
       }}
-      className="py-5 mb-5"
+      className="py-5 mb-5 chartLine-inner"
     >
-      <h2 className="text-xl text-white font-bold  ml-24">
-        Line Chart Example
-      </h2>
-      <div style={{ height: "400px" }}>
+      <h2 className="text-xl text-white font-bold ml-24">Revenue</h2>
+      <div
+        className="line-chart-container"
+        style={{ width: "100%", height: "400px" }}
+      >
         <LineChart
           data={data}
           lineColors={lineColors}

@@ -6,10 +6,35 @@
       display: none;
     }
   }
+
+  .car-card {
+    display: flex;
+    gap: 10px;
+    width: 350px;
+    padding: 15px;
+    background: #6d72f470;
+    border-radius: 25px;
+    .car-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 83px;
+      // height: 200px;
+      rotate: 90deg;
+    }
+    h2 {
+      width: 240px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 40.14px;
+    }
+  }
 }
 
 .info-card {
   box-shadow: -5px 16px 20px 0px #010f41a1;
+  height: 192px;
 }
 tspan {
   fill: #fff !important;
@@ -18,27 +43,30 @@ tspan {
 }
 #notifications {
   position: fixed;
-  right: 190px;
+  right: 170px;
   z-index: 10;
-
-  margin-top: 20px;
+  transition: 0.3s ease, transform 0.3s ease;
   @media (max-width: 767px) {
     margin-top: 0;
   }
   border: none !important;
   .notifi-inner {
     //position: fixed;
-    width: 22rem;
-    height: calc(100vh - 5.5rem);
+
+    transition: 0.3s ease, transform 0.3s ease;
+    width: 20rem;
+    height: calc(47.5vh);
     overflow-y: hidden;
     // padding: 15px 0;
     border: none !important;
     @media (max-width: 767px) {
-      height: calc(100vh - 20vh);
+      //height: calc(100vh - 20vh);
       width: 20rem;
     }
     .mydate {
       position: relative;
+
+      transition: 0.3s ease, transform 0.3s ease;
       &::after {
         position: absolute;
         width: 12px;
@@ -55,6 +83,8 @@ tspan {
   .notifi-bg {
     background-color: #f8f8f8;
     border: none !important;
+
+    transition: 0.3s ease, transform 0.3s ease;
   }
   #messages {
     margin-top: 25px;
@@ -91,6 +121,42 @@ tspan {
     100% {
       visibility: visible;
       opacity: 1;
+    }
+  }
+}
+.right-data {
+  .chartLine-inner {
+    height: 850px;
+    overflow: hidden;
+
+    @media (max-width: 786px) {
+      height: 450px;
+    }
+  }
+  .VictoryContainer,
+  .line-chart-container {
+    height: 650px;
+    @media (max-width: 786px) {
+      height: 400px;
+    }
+    @media (max-width: 1400px) {
+      scale: 1 !important;
+    }
+  }
+  .line-chart-container {
+    //  scale: 0.71;
+  }
+  .VictoryContainer {
+    // scale: 2;
+
+    svg {
+      @media (min-width: 1024px) {
+        scale: 2.1;
+
+        bottom: -180px;
+        width: 100%;
+        position: absolute;
+      }
     }
   }
 }

@@ -33,12 +33,14 @@ const InfoCard = ({ title, photo, path }) => {
     );
   if (error) return <div>Error loading data</div>;
   return (
-    <div className="flex w-3/12 lg:w-4/12 md:w-full flex-col info-card items-start p-4 bg-white rounded-lg ">
-      <div className="w-12 h-12 mb-4">
-        <img src={photo} alt="Icon" className="object-cover" />
+    <div className=" w-3/12 px-3 lg:w-4/12 md:w-full md:my-4">
+      <div className="flex   flex-col info-card items-start p-4 bg-white rounded-lg ">
+        <div className="w-12 h-12 mb-4">
+          <img src={photo} alt="Icon" className="object-cover" />
+        </div>
+        <div className="text-4xl font-bold mb-2 ">{data}</div>
+        <div className="text-black font-medium">{title}</div>
       </div>
-      <div className="text-4xl font-bold mb-2 ">{data}</div>
-      <div className="text-black font-medium">{title}</div>
     </div>
   );
 };

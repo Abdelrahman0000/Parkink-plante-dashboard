@@ -3,6 +3,8 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import Skeleton from "../../../Component/Skeleton";
+
+import User from "../../../assets/user.png";
 const fetchData = async (path) => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -35,11 +37,14 @@ const ClinteCard = ({ title, path, color }) => {
 
   return (
     <div className="flex  h-36 mb-7   flex-col info-card items-start p-4 bg-white rounded-lg ">
+      <div className="w-12 h-12 mb-4">
+        <img src={User} alt="Icon" className="object-cover" />
+      </div>
       <div className="text-black text-2xl font-medium">{title}</div>{" "}
       <div className="text-5xl 2xl:w-full xl:w-full flex items-center justify-between   font-bold mb-2   ">
         {data.number}{" "}
         <span
-          className="ml-auto bg-gray-300 w-4/12 text-lg inline-block flex rounded-lg items-center justify-center   h-7"
+          className="ml-auto bg-gray-300 w-6/12 text-lg inline-block flex rounded-lg items-center justify-center   h-7"
           style={{ color: color }}
         >
           {" "}

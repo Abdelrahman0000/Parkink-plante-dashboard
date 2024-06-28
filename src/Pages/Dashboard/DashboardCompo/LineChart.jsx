@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { VictoryChart, VictoryGroup, VictoryArea, VictoryAxis } from "victory";
 
 const LineChart = ({ data, lineColors, backgroundColors }) => {
@@ -9,8 +8,12 @@ const LineChart = ({ data, lineColors, backgroundColors }) => {
       style={{
         parent: {
           backgroundColor: "transparent", // Set the background color of the chart to transparent
+          width: "100%",
+          height: "100%",
         },
       }}
+      domainPadding={{ x: [20, 20], y: [20, 20] }}
+      padding={{ top: 20, bottom: 40, left: 50, right: 20 }}
     >
       <defs>
         {data.map((lineData, index) => (
@@ -39,7 +42,7 @@ const LineChart = ({ data, lineColors, backgroundColors }) => {
               data: {
                 fill: `url(#${generatePatternId(index)})`, // Use SVG pattern for background fill
                 stroke: lineColors[index % lineColors.length], // Line color
-                strokeWidth: 2, // Adjust the width of the line
+                strokeWidth: 3, // Adjust the width of the line
                 strokeLinecap: "round", // Rounded line ends
               },
             }}

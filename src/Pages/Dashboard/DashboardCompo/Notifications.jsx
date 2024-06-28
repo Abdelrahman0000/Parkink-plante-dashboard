@@ -58,7 +58,7 @@ const Notifications = () => {
         className={`absolute left z-10 mt-5 notifi-inner flex max-w-max -translate-x-1/2 px-4 ${
           !showNotifications && "hidden"
         }`}
-        style={{ height: isCollapsed ? "50px" : "calc(100vh - 28.5vh)" }}
+        style={{ height: isCollapsed ? "50px" : "calc(47.5vh)" }}
       >
         <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
           <div className="p-4">
@@ -71,7 +71,11 @@ const Notifications = () => {
               <FaBell className="fa-shake" />
               <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
             </button>
-            <div id="messages" className={`${!showMessages && "hidden"}`}>
+            <div
+              id="messages"
+              className={`${!showMessages && "hidden"}`}
+              style={{ display: isCollapsed ? "none" : "block" }}
+            >
               {notifications.length === 0 ? (
                 <div className="text-gray-400 text-xl">
                   There are no notifications available
