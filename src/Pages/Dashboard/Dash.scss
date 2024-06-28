@@ -42,12 +42,15 @@ tspan {
   color: #53757f57;
 }
 #notifications {
-  position: fixed;
-  right: 170px;
+  position: absolute;
+  right: 150px;
+  top: -22px;
   z-index: 10;
   transition: 0.3s ease, transform 0.3s ease;
   @media (max-width: 767px) {
     margin-top: 0;
+    top: 110px;
+    left: 150px;
   }
   border: none !important;
   .notifi-inner {
@@ -90,7 +93,7 @@ tspan {
     margin-top: 25px;
     animation: 1s fadeIn;
     animation-fill-mode: forwards;
-    height: calc(50.5vh - 6rem);
+    height: calc(55.5vh - 6rem);
     //  visibility: hidden;
     overflow-y: scroll;
     padding-right: 12px;
