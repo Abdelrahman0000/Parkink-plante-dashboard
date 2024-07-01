@@ -85,7 +85,7 @@ const Notifications = () => {
         className={`absolute left z-10 mt-5 notifi-inner flex  -translate-x-1/2 px-4 ${
           !showNotifications && "hidden"
         }`}
-        style={{ height: isCollapsed ? "56px" : "calc(59vh)" }}
+        style={{ height: isCollapsed ? "56px" : "25.28rem" }}
       >
         <div className="flex-auto overflow-hidden rounded-3xl text-sm leading-6 shadow-lg ring-gray-900/6 notifi-bg">
           <div className="p-4" style={{ direction: "rtl" }}>
@@ -93,7 +93,6 @@ const Notifications = () => {
               type="button"
               className="inline-flex  items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
               aria-expanded="false"
-              onClick={handleCollapse}
               style={{ direction: "ltr" }}
             >
               <FaRegBell className="fa-shake  text-2xl" />
@@ -102,7 +101,10 @@ const Notifications = () => {
                 className="w-7 h-7 mx-2 rounded-full"
                 alt="person"
               />
-              <FaChevronDown className="text-gray-600 group-hover:text-indigo-600 animate-bounce" />
+              <FaChevronDown
+                onClick={handleCollapse}
+                className="text-gray-600 group-hover:text-indigo-600 animate-bounce"
+              />
             </button>
             <div
               id="messages"

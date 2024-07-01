@@ -64,21 +64,22 @@
     background-color: #f9ca42;
     border-radius: 5rem;
   }
-}
-th {
-  color: #f9ca42;
-  background-color: #f9ca4229;
-  padding: 8px 20px;
-  min-width: 250px;
-}
-.b-left {
-  border-top-left-radius: 10px;
-}
-.b-right {
-  border-top-right-radius: 10px;
-}
-td {
-  background-color: #000000ab;
-  padding: 8px 20px;
-  min-width: 250px;
+
+  th {
+    color: #f9ca42;
+    background-color: #f9ca4229;
+    padding: 8px 20px;
+    min-width: 250px;
+  }
+  .b-left {
+    border-top-left-radius: 10px;
+  }
+  .b-right {
+    border-top-right-radius: 10px;
+  }
+  td {
+    background-color: #000000ab;
+    padding: 8px 20px;
+    min-width: 250px;
+  }
 }

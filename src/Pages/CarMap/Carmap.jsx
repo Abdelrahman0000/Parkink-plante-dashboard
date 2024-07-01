@@ -7,9 +7,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import Skeleton from "../../Component/Skeleton";
-
-const carImageUrl =
-  "https://s3-alpha-sig.figma.com/img/7f2e/9d59/d0bd09ee0dcb61774ed72d4104f88139?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TH5epAvFbJEQYSWVuAV8AlYOG8TCEoPHxAvI~-4kerqvtlX~f520KBVNc4Y-YrNJSJnEyY3JgPyBpNAy~MqRLEfATVKp2tDlYDeBvv~TXCOMl39YftVsxoQEPyifUE3fXBk9KRr-PxYts33EVuwuVqxDnHAvnMylY3vk~yo3WUrq~qSE8pGPxRKy~gWYqwI6mI7Wst~siIQv84vYmKdvHs75rUC3HGhZwr-UP-ivATyu-bv1UjALpBl~Wg4xHeLOGGe5IDamjxaiwYOT-UiVP6mYcjqK5YZZ8HqSi8CGcVKIVkgAByl9GyPXt60e~vsuBba5qrJ9h~g~HO5K3fUH2Q__"; // Replace with actual URL
+import Car from "../../assets/car.png";
+const carImageUrl = Car;
 
 const fetchSpaces = async () => {
   const token = localStorage.getItem("token");
@@ -114,7 +113,7 @@ const Carmap = () => {
           return (
             <div
               key={floor.floorNumber}
-              className="w-6/12 lg:w-full flex-wrap mt-14 flex justify-center items-start"
+              className="w-6/12 lg:w-full flex-wrap mt-14 flex justify-center md:justify-between items-start"
             >
               <h2
                 className="text-3xl text-gray-400 mb-10 text-center font-bold"
@@ -122,7 +121,7 @@ const Carmap = () => {
               >
                 ENTRANCE FLOOR {floor.floorNumber}
               </h2>
-              <div className="w-4/12 md:w-full">
+              <div className="w-4/12 md:6/12">
                 {leftColumnSpaces && (
                   <LeftColCar
                     lanes={leftColumnSpaces}
@@ -149,7 +148,7 @@ const Carmap = () => {
                   {floor.numberOfAvailableSpaces} SLOTS IS EMPTY
                 </p>
               </div>
-              <div className="w-4/12 md:w-full">
+              <div className="w-4/12 md:6/12">
                 {rightColumnSpaces && (
                   <RightColCar
                     lanes={rightColumnSpaces}

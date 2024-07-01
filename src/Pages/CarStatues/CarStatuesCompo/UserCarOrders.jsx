@@ -104,7 +104,7 @@ const UserCarOrders = () => {
     return (
       <div className="p-6 bg-gray-800 text-white TopCar rounded-lg shadow-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-bold">Most car booked</h2>
+          <h2 className="text-lg font-bold">User car orders</h2>
         </div>
         <div className="flex justify-center items-center car-h">
           <div
@@ -137,7 +137,7 @@ const UserCarOrders = () => {
   return (
     <div className="p-6 bg-gray-800 text-white order-chart rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold">Most car booked</h2>
+        <h2 className="text-lg font-bold">User car orders</h2>
         <select
           className="bg-gray-700 text-white p-2 rounded"
           value={timeframe}

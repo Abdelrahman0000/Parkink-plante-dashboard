@@ -42,6 +42,20 @@
   padding: 10px;
 }
 
+@media (max-width: 1189px) {
+  .car-map .left-col-car .slot-num {
+    width: 130px;
+    height: 125px;
+  }
+}
+
+@media (max-width: 767px) {
+  .car-map .left-col-car .slot-num {
+    width: 130px;
+    height: 125px;
+  }
+}
+
 .car-map .left-col-car .slot-num span {
   position: absolute;
   top: -17px;
@@ -68,6 +82,12 @@
   right: -3px;
 }
 
+@media (max-width: 767px) {
+  .car-map .left-col-car .slot-num:last-child .end-span {
+    top: 104px;
+  }
+}
+
 @keyframes moveCar {
   from {
     left: 216px;
@@ -80,10 +100,15 @@
 .car-map .left-col-car .slot-img {
   left: 216px;
   animation: moveCar 1s forwards;
-  /* Adjust the duration as needed */
   position: relative;
-  rotate: 90deg;
-  height: 150px;
+  /* rotate: 90deg; */
+  height: 72px;
+}
+
+@media (max-width: 767px) {
+  .car-map .left-col-car .slot-img {
+    height: 60px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -100,6 +125,20 @@
   border-right: 4px solid #ababab;
   position: relative;
   padding: 10px;
+}
+
+@media (max-width: 1189px) {
+  .car-map .right-col-car .slot-num {
+    width: 130px;
+    height: 125px;
+  }
+}
+
+@media (max-width: 767px) {
+  .car-map .right-col-car .slot-num {
+    width: 130px;
+    height: 125px;
+  }
 }
 
 .car-map .right-col-car .slot-num span {
@@ -129,6 +168,12 @@
   left: -3px;
 }
 
+@media (max-width: 767px) {
+  .car-map .right-col-car .slot-num:last-child .end-span {
+    top: 104px;
+  }
+}
+
 @keyframes moveCar2 {
   from {
     left: -170px;
@@ -142,6 +187,12 @@
   left: -170px;
   position: relative;
   animation: moveCar2 1s forwards;
-  rotate: -90deg;
-  height: 150px;
+  rotate: -180deg;
+  height: 72px;
+}
+
+@media (max-width: 767px) {
+  .car-map .right-col-car .slot-img {
+    height: 60px;
+  }
 }

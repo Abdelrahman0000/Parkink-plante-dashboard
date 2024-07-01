@@ -4,6 +4,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import LineChart from "./LineChart"; // Adjust the path as per your project structure
 
+import Skeleton from "../../../Component/Skeleton";
 const fetchMonthlyReportData = async () => {
   const token = localStorage.getItem("token");
 
@@ -55,14 +56,13 @@ const ClientMap = () => {
     "monthlyReportData",
     fetchMonthlyReportData
   );
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error loading data</div>;
-  }
+  if (isLoading)
+    return (
+      <div>
+        <Skeleton width={250} height={200} />
+      </div>
+    );
+  if (error) return <div>Error loading data</div>;
 
   const transformedData = transformData(data);
   const lineColors = ["#3e7492", "#9baa92"];

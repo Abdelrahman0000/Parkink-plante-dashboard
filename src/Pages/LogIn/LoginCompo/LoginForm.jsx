@@ -48,7 +48,7 @@ const LoginForm = () => {
         value={credentials.Email}
         onChange={handleChange}
         placeholder="E-Mail Address"
-        className="input-group "
+        className="input-group"
         required
       />
       <input
@@ -60,7 +60,9 @@ const LoginForm = () => {
         required
       />
       <div className="btn-container">
-        <button type="submit">Login</button>
+        <button type="submit" disabled={mutation.isLoading}>
+          {mutation.isLoading ? "Logging in..." : "Login"}
+        </button>
       </div>
     </form>
   );
