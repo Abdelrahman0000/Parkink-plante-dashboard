@@ -12,7 +12,9 @@ No private administrator or database password is in this repository. Demo creden
 ## Files and development
 
 - `parking-main.jsx`: active React entry, screens, forms, accessible dialogs and CSV download.
-- `parking-ui.css`: responsive dashboard and login styles; mobile bottom navigation and account controls.
+- `parking-ui.css`: dark dashboard foundation, original opposing parking lanes and staggered car arrivals, mobile bottom navigation and account controls.
+- `analytics-ui.css`: overview analytics and fluid/short-viewport login styling.
+- `parking-analytics.js`: pure Cairo-date booking analytics, with no synthetic chart injection.
 - `parking-data.js`: demo seed/persistence and shared Supabase adapter.
 - `parking-schema.sql`: one-time initial database schema, authorization and realtime publication.
 - `src/`: original project sources/assets retained as reference. The active `index.html` loads `parking-main.jsx`, not the old API-dependent entry.
@@ -81,3 +83,11 @@ Build the user interface against the same site/space/booking identifiers, but do
 Use sensor/gateway service identities and server-side validation for physical occupancy updates, never a browser service-role key. Define whether a staff edit is an override or source-of-truth sensor state. Add paginated queries, search indexes, server-side exports, monitoring and retention rules before large real datasets. Current booking table display is capped at 100 rows; the starter workspace has six.
 
 Split the root screen file into route/components modules as the product grows. Keep the data adapter as the boundary between screens and backend. Add automated tenant-isolation and transactional booking tests before enabling customer mutations.
+
+## Approved dark UI and analytics revision
+
+The original `src/Pages/CarMap` concept is preserved: opposing parking lanes, a central aisle, the original car asset, and staggered left/right arrivals. Replay affects presentation only, not occupancy. Status filters dim nonmatching bays in place to retain spatial meaning. Reduced motion disables arrivals.
+
+The overview explicitly separates current occupancy from period-based booking records. Today, 7-day and 30-day periods use Africa/Cairo arrival-date boundaries; all-loaded includes all valid loaded arrivals. Completed revenue uses completed bookings only and is not a claim of payment reconciliation. Average completed stays omit invalid or negative durations. No prior-period rows means no percentage comparison. Zero chart buckets mean no matching loaded rows, not confirmed absence of business. This is bounded-record analysis, not a complete historical reporting system. The existing booking table displays up to 100 rows; future reliable historical analytics need paginated storage queries and aggregate endpoints.
+
+Login grid/form items explicitly shrink, mobile form width is fluid, and inputs use 16px text to avoid mobile focus zoom. Short landscape and keyboard-height viewports remain scrollable. Keyboard-height tests simulate resized viewports, not a physical iOS keyboard. Authentication logic and the shared adapter were not changed by this UI revision.
