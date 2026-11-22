@@ -32,8 +32,9 @@ export function changeSpace(state, id, status) {
 }
 export function simulate(state) { const target = state.spaces[Math.floor(Math.random() * state.spaces.length)]; return changeSpace(state, target.id, target.status === 'occupied' ? 'available' : 'occupied'); }
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const url = import.meta.env.VITE_SUPABASE_URL || 'https://ohezipicitbvdrnucdsw.supabase.co';
+// The publishable project key is intentionally public. Authorization is enforced by RLS.
+const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_zYsbN1xZdcjV8uLgraIzJw_jBDO_7Pj';
 export const backendConfigured = Boolean(url && key);
 // Only a publishable/anon key belongs in Vite. Never put a service-role key here.
 export const supabase = backendConfigured ? createClient(url, key) : null;
@@ -64,4 +65,4 @@ export async function updateLiveSpace(id, status, expectedStatus) {
 export async function updateLiveDriver(id, blocked) {
   const { error } = await supabase.from('parking_drivers').update({ blocked }).eq('id', id);
   if (error) throw error;
-                                                                              }
+}
