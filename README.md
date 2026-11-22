@@ -24,7 +24,7 @@ npm run lint
 npm run build
 ```
 
-Optional environment overrides: `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. Only a publishable client key belongs here, never a database password or service-role key.
+Optional environment overrides: `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Only a publishable client key belongs here, never a database password or service-role key.
 
 The active entry is `parking-main.jsx`. Original sources under `src/` remain as reference; they are no longer the dashboard entry.
 
