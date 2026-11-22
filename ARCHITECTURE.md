@@ -23,7 +23,7 @@ No private administrator or database password is in this repository. Demo creden
 
 Use Node 22, `npm ci`, `npm run dev`, `npm run lint`, and `npm run build`. Lint targets the active application, not the archived old screens. PropTypes describe active component inputs. The React-refresh export rule is disabled only in the root entry, which mounts rather than exports components.
 
-Vite environment overrides: `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The default project URL and publishable key in the adapter are public client configuration. They carry no private privilege. Never add a service-role key or database password to a Vite variable, bundle, screenshot or repository. Changing projects requires applying the schema and assigning memberships in that project.
+Vite environment overrides: `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. The default project URL and publishable key in the adapter are public client configuration. They carry no private privilege. Never add a service-role key or database password to a Vite variable, bundle, screenshot or repository. Changing projects requires applying the schema and assigning memberships in that project.
 
 Deployment is from this repository's `main` branch through the existing Vercel connection.
 
