@@ -8,7 +8,7 @@ const names = ['Adam Hassan', 'Nour Ali', 'Omar Salem', 'Maya Farid', 'Youssef A
 export function seed() {
   const now = Date.now();
   const drivers = names.map((name, i) => ({ id: `driver-${i}`, name, email: `driver${i + 1}@example.com`, plate: `DEMO ${120 + i}`, vehicle: ['Tesla Model 3', 'BMW 320i', 'Toyota Corolla', 'Hyundai Tucson'][i % 4], blocked: i === 6 }));
-  const spaces = Array.from({ length: 48 }, (_, i) => ({ id: `space-${i}`, label: `${i < 24 ? 'A' : 'B'}-${String(i % 24 + 1).padStart(2, '0')}`, floor: i < 24 ? 'Ground floor' : 'First floor', status: i % 7 === 0 ? 'reserved' : i % 3 === 0 ? 'available' : 'occupied', type: i % 11 === 0 ? 'accessible' : i % 8 === 0 ? 'ev' : 'standard' }));
+  const spaces = Array.from({ length: 48 }, (_, i) => ({ id: `space-${i}`, label: `${i < 24 ? 'A' : 'B'}-${String(i % 24 + 1).padStart(2, '0')}`, floor: i < 24 ? 'Ground floor' : 'First floor', status: i >= 1 && i <= 4 ? 'occupied' : i % 7 === 0 ? 'reserved' : i % 3 === 0 ? 'available' : 'occupied', type: i % 11 === 0 ? 'accessible' : i % 8 === 0 ? 'ev' : 'standard' }));
   const bookings = drivers.slice(0, 6).map((d, i) => ({ id: `BK-${1041 + i}`, driver_id: d.id, space_id: `space-${i + 1}`, start_at: new Date(now - (i + 1) * 1800000).toISOString(), end_at: i > 3 ? new Date(now - i * 300000).toISOString() : null, amount: i > 3 ? 40 + i * 10 : 0, status: i > 3 ? 'completed' : 'active' }));
   return { version: 2, spaces, drivers, bookings, events: [{ id: 'welcome', message: 'Demo workspace is ready. Explore without affecting real parking data.', created_at: stamp(), kind: 'info' }], updated_at: stamp() };
 }
@@ -55,7 +55,7 @@ export async function loadWorkspace() {
 export function watchWorkspace(site_id, onChange, onStatus) {
   const channel = supabase.channel(`parking:${site_id}`);
   for (const table of ['spaces', 'drivers', 'bookings', 'events']) channel.on('postgres_changes', { event: '*', schema: 'public', table: `parking_${table}`, filter: `site_id=eq.${site_id}` }, onChange);
-  channel.subscribe(status => onStatus(status === 'SUBSCRIBED' ? 'connected' : status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' ? 'disconnected' : 'connecting'));
+  channel.subscribe(status => { onStatus(status === 'SUBSCRIBED' ? 'connected' : ['CHANNEL_ERROR', 'TIMED_OUT', 'CLOSED'].includes(status) ? 'disconnected' : 'connecting'); if (status === 'SUBSCRIBED') onChange(); });
   return () => { supabase.removeChannel(channel); };
 }
 export async function updateLiveSpace(id, status, expectedStatus) {
@@ -65,4 +65,4 @@ export async function updateLiveSpace(id, status, expectedStatus) {
 export async function updateLiveDriver(id, blocked) {
   const { error } = await supabase.from('parking_drivers').update({ blocked }).eq('id', id);
   if (error) throw error;
-}
+    }
